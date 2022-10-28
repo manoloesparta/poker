@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source src/utils.sh
 source src/commands.sh
 
 usage() {
@@ -23,7 +24,8 @@ case "$1" in
     pull)
         IMAGE_NAME=$2
         IMAGE_TAG=$3
-        poker_pull "$2" "$3"
+        export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
+        poker_pull
     ;;
     hello)
         echo "hello there, poker"
