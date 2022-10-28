@@ -13,18 +13,20 @@ You need this packages installed
 * make
 * shellcheck
 * skopeo
+* tar
 * docker ([temporarily for pulling images](https://github.com/manoloesparta/poker/issues/1))
 
 # Commands
 
-- [x] poker pull
-- [ ] poker run
-- [ ] poker images
+- [x] poker pull IMAGE_NAME [IMAGE_TAG]
+- [x] poker images
+- [ ] poker run FRIENDLY_NAME IMAGE_NAME [IMAGE_TAG]
 - [ ] poker ps
-- [ ] poker exec
-- [ ] poker rm
-- [ ] poker build
-- [ ] poker rmi
+- [ ] poker stop FRIENDLY_NAME
+- [ ] poker exec FRIENDLY_NAME COMMAND
+- [ ] poker rm FRIENDLY_NAME
+- [ ] poker rmi IMAGE_NAME [IMAGE_TAG]
+- [ ] poker build POKERFILE
 
 # Features
 
@@ -40,7 +42,7 @@ You need this packages installed
 * [Building a container from scratch in Go by Liz Rice](https://www.youtube.com/watch?v=Utf-A4rODH8)
 * [Containers from scratch: The sequel by Liz Rice](https://www.youtube.com/watch?v=_TsSmSu57Zo)
 * [What Are Namespaces and cgroups, and How Do They Work?](https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/)
-* [Pulling docker images with curl](https://github.com/moby/moby/blob/master/contrib/download-frozen-image-v2.sh) (In progress...)
+* [Pulling docker images with curl](https://github.com/moby/moby/blob/master/contrib/download-frozen-image-v2.sh)
 
 # License
 

@@ -24,9 +24,22 @@ poker_pull() {
     done
 }
 
+poker_list() {
+    ls -1 layers | sed 's/\./:/'
+}
+
 poker_run() {
     FRIENDLY_NAME=$1
+
+    if [ -z "$FRIENDLY_NAME" ];
+    then
+        echo "FRIENDLY_NAME must be provided"
+        exit 1
+    fi
+
     # Check that layers exist
+
     # Mount the overlay filesystem
+
     echo "running container: $FRIENDLY_NAME with $IMAGE"
 }

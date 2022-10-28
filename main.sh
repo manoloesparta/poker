@@ -9,8 +9,8 @@ usage() {
     echo
     echo "Comands:"
     echo -e "  pull:      Download image layers from the docker registry"
-    echo -e "  run:       Run commands inside running container"
     echo -e "  images:    List the locally available images"
+    echo -e "  run:       Run commands inside running container"
     echo
 }
 
@@ -26,6 +26,9 @@ case "$1" in
         IMAGE_TAG=$3
         export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
         poker_pull
+    ;;
+    images)
+        poker_list
     ;;
     run)
         IMAGE_NAME=$2
