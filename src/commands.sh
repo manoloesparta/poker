@@ -10,21 +10,9 @@ poker_pull() {
     fi
 
     image=$IMAGE_NAME:$IMAGE_TAG
-    if [ -d $image ];
-    then
-        rm -rf layers/${image}/*
-    else
-        mkdir layers/$image
-    fi
+    image_dir=$IMAGE_NAME.$IMAGE_TAG
 
     docker pull $image
 
-    layers=$(docker inspect $image | jq '.[0].RootFS.Layers')
-    clean_layers=$(echo $layers | sed 's/"sha256://g' | sed 's/",//g' | sed 's/"//g' | sed 's/\[//g' | sed 's/]//g' | tr ' ' '\n')
-
-    docker_layers_path=/var/lib/docker/image/overlay2/distribution/v2metadata-by-diffid/sha256
-
-    echo $clean_layers
-
-    echo $clean_layers | tr ' ' '\n'  | while read -r layer; do mv ${docker_layers_path}/${layer} layers/$image; done
+    skopeo copy docker-daemon:$image oci:layers/$image_dir
 }

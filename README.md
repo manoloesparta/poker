@@ -4,18 +4,21 @@ Poker (Poquito Docker) is a bash implementation of Docker, making direct use of 
 
 # Requirements
 
+You need this packages installed
+
 * make
 * curl
 * jq
 * shellcheck
 * skopeo
+* docker (for pulling images)
 
 # Features
 
 - [ ] bocker pull
 - [ ] bocker run
 - [ ] bocker images
-- [ ] bocker ps 
+- [ ] bocker ps
 - [ ] bocker exec
 - [ ] bocker rm
 - [ ] bocker build
