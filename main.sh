@@ -27,6 +27,12 @@ case "$1" in
         export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
         poker_pull
     ;;
+    run)
+        IMAGE_NAME=$2
+        IMAGE_TAG=$3
+        export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
+        poker_run
+    ;;
     hello)
         echo "hello there, poker"
     ;;
