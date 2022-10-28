@@ -10,6 +10,7 @@ usage() {
     echo "Comands:"
     echo -e "  pull:      Download image layers from the docker registry"
     echo -e "  images:    List the locally available images"
+    echo -e "  rmi:       Remove local image"
     echo -e "  run:       Run commands inside running container"
     echo
 }
@@ -28,7 +29,13 @@ case "$1" in
         poker_pull
     ;;
     images)
-        poker_list
+        poker_list_images
+    ;;
+    rmi)
+        IMAGE_NAME=$2
+        IMAGE_TAG=$3
+        export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
+        poker_remove_image 
     ;;
     run)
         IMAGE_NAME=$2

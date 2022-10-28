@@ -15,6 +15,6 @@ export_image_variables() {
         export IMAGE_TAG="latest"
     fi
 
-    export IMAGE=$IMAGE_NAME:$IMAGE_TAG
-    export IMAGE_DIR=$IMAGE_NAME.$IMAGE_TAG
+    export IMAGE="$IMAGE_NAME":"$IMAGE_TAG"
+    export IMAGE_DIR=layers/"$IMAGE_NAME"."$IMAGE_TAG"
 }

@@ -6,7 +6,7 @@ Poker (Poquito Docker) is a bash implementation of Docker, making direct use of 
 
 # Requirements
 
-You need this packages installed
+You need this packages installed for running poker
 
 * curl
 * jq
@@ -20,13 +20,12 @@ You need this packages installed
 
 - [x] poker pull IMAGE_NAME [IMAGE_TAG]
 - [x] poker images
+- [x] poker rmi IMAGE_NAME [IMAGE_TAG]
 - [ ] poker run FRIENDLY_NAME IMAGE_NAME [IMAGE_TAG]
 - [ ] poker ps
 - [ ] poker stop FRIENDLY_NAME
 - [ ] poker exec FRIENDLY_NAME COMMAND
-- [ ] poker rm FRIENDLY_NAME
-- [ ] poker rmi IMAGE_NAME [IMAGE_TAG]
-- [ ] poker build POKERFILE
+- [ ] poker build POKERFILE_PATH
 
 # Features
 
