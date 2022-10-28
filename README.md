@@ -1,6 +1,6 @@
-# bocker
+# Poker - Poquito Docker
 
-docker implementation with Bash
+Poker (Poquito Docker) is a bash implementation of Docker, making direct use of cgroups and namespaces for creating, managing, and interacting with containers.
 
 # Requirements
 
@@ -8,7 +8,7 @@ docker implementation with Bash
 * curl
 * jq
 * shellcheck
-* docker (used for downloading layers)
+* skopeo
 
 # Features
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bocker_pull() {
+poker_pull() {
     IMAGE_NAME=$1
     IMAGE_TAG=$2
 

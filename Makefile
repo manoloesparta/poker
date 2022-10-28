@@ -1,5 +1,5 @@
 all:
-	ln -s main.sh bocker
+	ln -s main.sh poker
 
 lint:
 	echo "linting"
