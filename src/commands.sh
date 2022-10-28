@@ -25,5 +25,8 @@ poker_pull() {
 }
 
 poker_run() {
-    echo "work in progress"
+    FRIENDLY_NAME=$1
+    # Check that layers exist
+    # Mount the overlay filesystem
+    echo "running container: $FRIENDLY_NAME with $IMAGE"
 }

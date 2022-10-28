@@ -31,7 +31,8 @@ case "$1" in
         IMAGE_NAME=$2
         IMAGE_TAG=$3
         export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
-        poker_run
+        FRIENDLY_NAME=$4
+        poker_run "$FRIENDLY_NAME"
     ;;
     hello)
         echo "hello there, poker"
