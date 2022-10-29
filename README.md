@@ -25,7 +25,6 @@ You need this packages installed for running poker
 - [x] poker ps
 - [x] poker stop CONTAINER_NAME 
 - [x] poker exec CONTAINER_NAME COMMAND
-- [ ] poker build POKERFILE_PATH
 
 # Features
 
@@ -34,7 +33,6 @@ You need this packages installed for running poker
 - [ ] Resource limiting
 - [ ] Port forwarding
 - [ ] Volumes
-- [ ] Pokerfiles
 
 # Helpful Resources
 
@@ -42,6 +40,8 @@ You need this packages installed for running poker
 * [Building a container from scratch in Go by Liz Rice](https://www.youtube.com/watch?v=Utf-A4rODH8)
 * [Containers from scratch: The sequel by Liz Rice](https://www.youtube.com/watch?v=_TsSmSu57Zo)
 * [What Are Namespaces and cgroups, and How Do They Work?](https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/)
+* [How to write a container daemon in Python](https://www.youtube.com/watch?v=I326bpbdvJo)
+* [Rebuild Docker from Scratch](https://github.com/Fewbytes/rubber-docker)
 
 # License
 

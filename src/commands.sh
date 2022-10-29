@@ -99,7 +99,7 @@ poker_stop_container() {
 }
 
 poker_exec_container() {
-    COMMAND=$1
+    COMMAND=$@
 
     # Check that container exist
     if [ ! -d "$CONTAINER_DIR" ];

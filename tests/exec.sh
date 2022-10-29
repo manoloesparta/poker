@@ -9,7 +9,7 @@ test_exec_in_container() {
     pre_stop=$(./main.sh ps)
 
     # When
-    ./main.sh exec $CONTAINER_NAME "touch botita"
+    ./main.sh exec $CONTAINER_NAME touch botita
 
     # Then
     stat containers/"$CONTAINER_NAME"/upper/botita > /dev/null

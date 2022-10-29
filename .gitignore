@@ -6,3 +6,6 @@ nohup.out
 poker
 layers
 containers
+
+# Editor
+.vscode/

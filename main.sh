@@ -55,7 +55,9 @@ case "$1" in
     exec)
         CONTAINER_NAME=$2
         export_container_variables "$CONTAINER_NAME"
-        COMMAND=$3
+        shift
+        shift
+        COMMAND=$@
         poker_exec_container "$COMMAND"
     ;;
     hello)
