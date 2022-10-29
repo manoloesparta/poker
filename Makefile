@@ -14,3 +14,4 @@ tests:
 	./tests/run.sh
 	./tests/ps.sh
 	./tests/stop.sh
+	./tests/exec.sh

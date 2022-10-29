@@ -14,6 +14,7 @@ usage() {
     echo -e "  run:       Run commands inside a running container"
     echo -e "  ps:        List running containers"
     echo -e "  stop:      Stop running containers"
+    echo -e "  exec:      Execute command in running containers"
     echo
 }
 
@@ -50,6 +51,12 @@ case "$1" in
         CONTAINER_NAME=$2
         export_container_variables "$CONTAINER_NAME"
         poker_stop_container
+    ;;
+    exec)
+        CONTAINER_NAME=$2
+        export_container_variables "$CONTAINER_NAME"
+        COMMAND=$3
+        poker_exec_container "$COMMAND"
     ;;
     hello)
         echo "hello there, poker"

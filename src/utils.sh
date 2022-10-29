@@ -19,7 +19,6 @@ export_image_variables() {
     export IMAGE_DIR="layers/$IMAGE_NAME.$IMAGE_TAG"
 }
 
-
 export_container_variables() {
     CONTAINER_NAME=$1
 

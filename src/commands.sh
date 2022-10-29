@@ -97,3 +97,17 @@ poker_stop_container() {
     # Delete container directory
     sudo rm -rf $CONTAINER_DIR
 }
+
+poker_exec_container() {
+    COMMAND=$1
+
+    # Check that container exist
+    if [ ! -d "$CONTAINER_DIR" ];
+    then
+        echo "Container $CONTAINER does not exist"
+        exit 1
+    fi 
+
+    # Go into chroot and execute command
+    sudo chroot $CONTAINER_DIR/mount $COMMAND
+}
