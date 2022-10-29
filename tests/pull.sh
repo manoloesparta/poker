@@ -12,6 +12,9 @@ test_pull_latest_image() {
     stat layers/$IMAGE_TO_TEST.latest > /dev/null
     stat layers/$IMAGE_TO_TEST.latest/directories > /dev/null
     stat layers/$IMAGE_TO_TEST.latest/directories/0 > /dev/null
+
+    # Cleanup
+    rm -rf layers/$IMAGE_TO_TEST.latest
 }
 
 test_pull_specific_image() {
@@ -27,6 +30,9 @@ test_pull_specific_image() {
     stat layers/$IMAGE_TO_TEST.$IMAGE_TAG > /dev/null
     stat layers/$IMAGE_TO_TEST.$IMAGE_TAG/directories > /dev/null
     stat layers/$IMAGE_TO_TEST.$IMAGE_TAG/directories/0 > /dev/null
+
+    # Cleanup
+    rm -rf layers/$IMAGE_TO_TEST.$IMAGE_TAG
 }
 
 test_pull_latest_image

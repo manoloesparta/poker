@@ -1,18 +1,18 @@
 #!/bin/bash
 
 poker_pull() {
-    echo "Pulling "$IMAGE" from docker hub"
+    echo "Pulling $IMAGE from docker hub"
 
     # Downlaod image and extract layers in OCI format
     docker pull "$IMAGE" > /dev/null
-    skopeo copy docker-daemon:"$IMAGE" oci:"$IMAGE_DIR" > /dev/null
+    skopeo copy "docker-daemon:$IMAGE" "oci:$IMAGE_DIR" > /dev/null
 
     # Get layers manifest file
-    layers_manifest_file=$(jq '.manifests[0].digest' < "$IMAGE_DIR"/index.json) 
+    layers_manifest_file=$(jq '.manifests[0].digest' < "$IMAGE_DIR/index.json") 
     layers_manifest_file_clean=$(echo "$layers_manifest_file" | sed 's/sha256://g' | sed 's/"//g')
 
     # Find the tars for lower directories
-    layers_tars=$(jq '.layers' < "$IMAGE_DIR"/blobs/sha256/"$layers_manifest_file_clean")
+    layers_tars=$(jq '.layers' < "$IMAGE_DIR/blobs/sha256/$layers_manifest_file_clean")
     layers_tars_clean=$(echo "$layers_tars" | jq | grep digest | sed 's/    "digest": "sha256://g' | sed 's/",//g')
 
     # Extract all lower directories
@@ -28,31 +28,66 @@ poker_pull() {
 }
 
 poker_list_images() {
-    echo "Images"
+    echo "IMAGES"
     echo
     ls -1 layers | sed 's/\./:/'
 }
 
 poker_remove_image() {
-    if [ -d $IMAGE_DIR ];
+    if [ -d "$IMAGE_DIR" ];
     then
-        rm -rf $IMAGE_DIR
+        rm -rf "$IMAGE_DIR"
         echo "$IMAGE" removed
     fi
 }
 
 poker_run() {
-    FRIENDLY_NAME=$1
+    CONTAINER_NAME=$1
 
-    if [ -z "$FRIENDLY_NAME" ];
+    if [ -z "$CONTAINER_NAME" ];
     then
-        echo "FRIENDLY_NAME must be provided"
+        echo "CONTAINER_NAME must be provided"
         exit 1
     fi
 
     # Check that layers exist
+    if [ ! -d "$IMAGE_DIR" ];
+    then
+        echo "Image $IMAGE has not been pulled"
+        exit 1
+    fi 
+
+    # Check CONTAINER_NAME is not take
+    container_dir="containers/$CONTAINER_NAME"
+    if [ -d "$container_dir" ];
+    then
+        echo "Unable to create container $CONTAINER_NAME is already taken"
+        exit 1
+    fi
+
+    # Get the lower directories
+    lowerdirs=""
+    for file in "$IMAGE_DIR"/directories/*;
+    do
+        lowerdirs+=$file:
+    done
+    lowerdirs=${lowerdirs::-1}
 
     # Mount the overlay filesystem
+    mkdir -p "$container_dir"/{upper,work,mount}
+    echo "$IMAGE" > "$container_dir/image"
+    sudo mount -t overlay -o rw,lowerdir="$lowerdirs",upperdir="$container_dir"/upper,workdir="$container_dir"/work overlay "$container_dir"/mount
 
-    echo "running container: $FRIENDLY_NAME with $IMAGE"
+    echo "Container '$CONTAINER_NAME' is running"
+}
+
+poker_list_running_containers() {
+    echo "RUNNING CONTAINERS"
+    echo
+
+    for container in $(ls -1 containers);
+    do
+        image=$(cat containers/"$container"/image)
+        echo "NAME $container IMAGE $image"
+    done
 }

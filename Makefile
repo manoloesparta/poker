@@ -8,9 +8,8 @@ lint:
 
 .PHONY: tests
 tests:
-	rm -rf layers
 	./tests/pull.sh
-	rm -rf layers
 	./tests/images.sh
-	rm -rf layers
 	./tests/rmi.sh
+	./tests/run.sh
+	./tests/ps.sh

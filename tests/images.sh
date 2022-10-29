@@ -10,7 +10,10 @@ test_list_images() {
     output=$(./main.sh images)
 
     # Then
-    echo $output | grep $IMAGE_TO_TEST:$IMAGE_TAG
+    echo "$output" | grep $IMAGE_TO_TEST:$IMAGE_TAG > /dev/null
+
+    # Cleanup
+    rm -rf layers/$IMAGE_TO_TEST.$IMAGE_TAG
 }
 
 test_list_images
