@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export_image_variables() {
-    export IMAGE_NAME=$1
-    export IMAGE_TAG=$2
+    IMAGE_NAME=$1
+    IMAGE_TAG=$2
 
     if [ -z "$IMAGE_NAME" ];
     then
@@ -12,9 +12,23 @@ export_image_variables() {
 
     if [ -z "$IMAGE_TAG" ];
     then
-        export IMAGE_TAG="latest"
+        IMAGE_TAG="latest"
     fi
 
-    export IMAGE="$IMAGE_NAME":"$IMAGE_TAG"
-    export IMAGE_DIR=layers/"$IMAGE_NAME"."$IMAGE_TAG"
+    export IMAGE="$IMAGE_NAME:$IMAGE_TAG"
+    export IMAGE_DIR="layers/$IMAGE_NAME.$IMAGE_TAG"
+}
+
+
+export_container_variables() {
+    CONTAINER_NAME=$1
+
+    if [ -z "$CONTAINER_NAME" ];
+    then
+        echo "CONTAINER_NAME must be provided"
+        exit 1
+    fi
+
+    export CONTAINER=$CONTAINER_NAME
+    export CONTAINER_DIR="containers/$CONTAINER_NAME"
 }

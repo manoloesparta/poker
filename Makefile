@@ -13,3 +13,4 @@ tests:
 	./tests/rmi.sh
 	./tests/run.sh
 	./tests/ps.sh
+	./tests/stop.sh

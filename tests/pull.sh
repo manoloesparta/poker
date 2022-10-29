@@ -2,7 +2,7 @@
 
 test_pull_latest_image() {
     # Given 
-    IMAGE_TO_TEST=nginx
+    IMAGE_TO_TEST="busybox"
 
     # When
     ./main.sh pull $IMAGE_TO_TEST > /dev/null
@@ -19,8 +19,8 @@ test_pull_latest_image() {
 
 test_pull_specific_image() {
     # Given 
-    IMAGE_TO_TEST=nginx
-    IMAGE_TAG=1.23
+    IMAGE_TO_TEST="busybox"
+    IMAGE_TAG="1.34"
 
     # When
     ./main.sh pull $IMAGE_TO_TEST $IMAGE_TAG > /dev/null

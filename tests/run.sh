@@ -2,7 +2,7 @@
 
 test_run_container() {
     # Given
-    IMAGE_TO_TEST="nginx"
+    IMAGE_TO_TEST="busybox"
     ./main.sh pull $IMAGE_TO_TEST > /dev/null
 
     # When
@@ -23,7 +23,7 @@ test_run_container() {
 
 test_name_already_take() {
     # Given
-    IMAGE_TO_TEST="nginx"
+    IMAGE_TO_TEST="busybox"
     ./main.sh pull $IMAGE_TO_TEST > /dev/null
     CONTAINER_NAME="test"
     ./main.sh run $CONTAINER_NAME $IMAGE_TO_TEST > /dev/null

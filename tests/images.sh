@@ -2,8 +2,8 @@
 
 test_list_images() {
     # Given
-    IMAGE_TO_TEST=nginx
-    IMAGE_TAG=1.23
+    IMAGE_TO_TEST="busybox"
+    IMAGE_TAG="1.34"
     ./main.sh pull $IMAGE_TO_TEST $IMAGE_TAG > /dev/null
 
     # When

@@ -42,24 +42,15 @@ poker_remove_image() {
 }
 
 poker_run() {
-    CONTAINER_NAME=$1
-
-    if [ -z "$CONTAINER_NAME" ];
-    then
-        echo "CONTAINER_NAME must be provided"
-        exit 1
-    fi
-
-    # Check that layers exist
+    # Check that image exist
     if [ ! -d "$IMAGE_DIR" ];
     then
         echo "Image $IMAGE has not been pulled"
         exit 1
     fi 
 
-    # Check CONTAINER_NAME is not take
-    container_dir="containers/$CONTAINER_NAME"
-    if [ -d "$container_dir" ];
+    # Check CONTAINER_NAME is not taken
+    if [ -d "$CONTAINER_DIR" ];
     then
         echo "Unable to create container $CONTAINER_NAME is already taken"
         exit 1
@@ -74,9 +65,9 @@ poker_run() {
     lowerdirs=${lowerdirs::-1}
 
     # Mount the overlay filesystem
-    mkdir -p "$container_dir"/{upper,work,mount}
-    echo "$IMAGE" > "$container_dir/image"
-    sudo mount -t overlay -o rw,lowerdir="$lowerdirs",upperdir="$container_dir"/upper,workdir="$container_dir"/work overlay "$container_dir"/mount
+    mkdir -p "$CONTAINER_DIR"/{upper,work,mount}
+    echo "$IMAGE" > "$CONTAINER_DIR/image"
+    sudo mount -t overlay -o rw,lowerdir="$lowerdirs",upperdir="$CONTAINER_DIR"/upper,workdir="$CONTAINER_DIR"/work overlay "$CONTAINER_DIR"/mount
 
     echo "Container '$CONTAINER_NAME' is running"
 }
@@ -90,4 +81,19 @@ poker_list_running_containers() {
         image=$(cat containers/"$container"/image)
         echo "NAME $container IMAGE $image"
     done
+}
+
+poker_stop_container() {
+    # Check that container exist
+    if [ ! -d "$CONTAINER_DIR" ];
+    then
+        echo "Container $CONTAINER does not exist"
+        exit 1
+    fi 
+
+    # Umount container filesystem
+    sudo umount $CONTAINER_DIR/mount
+
+    # Delete container directory
+    sudo rm -rf $CONTAINER_DIR
 }

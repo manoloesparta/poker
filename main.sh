@@ -13,6 +13,7 @@ usage() {
     echo -e "  rmi:       Remove local image"
     echo -e "  run:       Run commands inside a running container"
     echo -e "  ps:        List running containers"
+    echo -e "  stop:      Stop running containers"
     echo
 }
 
@@ -38,14 +39,23 @@ case "$1" in
         IMAGE_NAME=$3
         IMAGE_TAG=$4
         export_image_variables "$IMAGE_NAME" "$IMAGE_TAG"
-        FRIENDLY_NAME=$2
-        poker_run "$FRIENDLY_NAME"
+        CONTAINER_NAME=$2
+        export_container_variables "$CONTAINER_NAME"
+        poker_run 
     ;;
     ps)
         poker_list_running_containers
     ;;
+    stop)
+        CONTAINER_NAME=$2
+        export_container_variables "$CONTAINER_NAME"
+        poker_stop_container
+    ;;
     hello)
         echo "hello there, poker"
+    ;;
+    ping)
+        echo "pong"
     ;;
     *)
         usage

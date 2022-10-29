@@ -23,7 +23,7 @@ You need this packages installed for running poker
 - [x] poker rmi IMAGE_NAME [IMAGE_TAG]
 - [x] poker run CONTAINER_NAME IMAGE_NAME [IMAGE_TAG]
 - [x] poker ps
-- [ ] poker stop CONTAINER_NAME 
+- [x] poker stop CONTAINER_NAME 
 - [ ] poker exec CONTAINER_NAME COMMAND
 - [ ] poker build POKERFILE_PATH
 

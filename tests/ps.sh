@@ -2,9 +2,9 @@
 
 test_check_running_containers() {
     # Given
-    IMAGE_TO_TEST=nginx
+    IMAGE_TO_TEST="busybox"
     ./main.sh pull $IMAGE_TO_TEST > /dev/null
-    CONTAINER_NAME=botitas
+    CONTAINER_NAME="test"
     ./main.sh run $CONTAINER_NAME $IMAGE_TO_TEST > /dev/null
 
     # When
