@@ -8,13 +8,13 @@ Poker (Poquito Docker) is a bash implementation of Docker, making direct use of 
 
 You need this packages installed for running poker
 
-* chroot
-* curl
-* jq
-* make
-* skopeo
-* tar
-* docker ([temporarily for pulling images](https://github.com/manoloesparta/poker/issues/1))
+- chroot
+- curl
+- jq
+- make
+- skopeo
+- tar
+- docker ([temporarily for pulling images](https://github.com/manoloesparta/poker/issues/1))
 
 # Commands
 
@@ -23,25 +23,24 @@ You need this packages installed for running poker
 - [x] poker rmi IMAGE_NAME [IMAGE_TAG]
 - [x] poker run CONTAINER_NAME IMAGE_NAME [IMAGE_TAG]
 - [x] poker ps
-- [x] poker stop CONTAINER_NAME 
+- [x] poker stop CONTAINER_NAME
 - [x] poker exec CONTAINER_NAME COMMAND
 
-# Features
+# Features of a container
 
-- [x] Containers
-- [ ] Networking
+- [x] Storage isolation
 - [ ] Resource limiting
-- [ ] Port forwarding
-- [ ] Volumes
+- [ ] Network isolation
+- [ ] Process isolation
 
 # Helpful Resources
 
-* [The Book of Kubernetes (Chapters 2 - 5)](https://nostarch.com/book-kubernetes)
-* [Building a container from scratch in Go by Liz Rice](https://www.youtube.com/watch?v=Utf-A4rODH8)
-* [Containers from scratch: The sequel by Liz Rice](https://www.youtube.com/watch?v=_TsSmSu57Zo)
-* [What Are Namespaces and cgroups, and How Do They Work?](https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/)
-* [How to write a container daemon in Python](https://www.youtube.com/watch?v=I326bpbdvJo)
-* [Rebuild Docker from Scratch](https://github.com/Fewbytes/rubber-docker)
+- [The Book of Kubernetes (Chapters 2 - 5)](https://nostarch.com/book-kubernetes)
+- [Building a container from scratch in Go by Liz Rice](https://www.youtube.com/watch?v=Utf-A4rODH8)
+- [Containers from scratch: The sequel by Liz Rice](https://www.youtube.com/watch?v=_TsSmSu57Zo)
+- [What Are Namespaces and cgroups, and How Do They Work?](https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/)
+- [How to write a container daemon in Python](https://www.youtube.com/watch?v=I326bpbdvJo)
+- [Rebuild Docker from Scratch](https://github.com/Fewbytes/rubber-docker)
 
 # License
 
